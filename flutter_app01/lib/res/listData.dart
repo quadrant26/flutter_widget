@@ -2,7 +2,7 @@ List listData = [
   {
     "title": "candy Shop",
     "author": "A",
-    "imageUrl": "http://img0.imgtn.bdimg.com/it/u=2977891838,618277864&fm=26&gp=0.jpg"
+    "imageUrl": "http://pic40.nipic.com/20140412/11412826_124950636000_2.jpg"
   },
   {
     "title": "Super me",
@@ -22,6 +22,6 @@ List listData = [
   {
     "title": "711",
     "author": "E",
-    "imageUrl": "http://pic.58pic.com/58pic/17/34/67/79D58PICtUI_1024.jpg"
+    "imageUrl": "http://b-ssl.duitang.com/uploads/item/201203/11/20120311132147_vfZv4.jpeg"
   },
 ];
