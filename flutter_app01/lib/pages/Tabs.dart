@@ -27,6 +27,7 @@ class _TabsState extends State<Tabs> {
         body: this._pageList[this._currentIndex],
         bottomNavigationBar: BottomNavigationBar(
           currentIndex: this._currentIndex,
+          type: BottomNavigationBarType.fixed, // 配置底部按钮有多个按钮
           onTap: (int index){
             setState(() {
               this._currentIndex = index;
@@ -45,6 +46,14 @@ class _TabsState extends State<Tabs> {
             BottomNavigationBarItem(
               icon: Icon(Icons.card_travel),
               title: Text('购物车')
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.settings),
+              title: Text('设置')
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.merge_type),
+              title: Text('个人中心')
             )
           ]
         ),
