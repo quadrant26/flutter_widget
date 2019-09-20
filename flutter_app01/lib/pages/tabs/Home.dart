@@ -24,9 +24,9 @@ class _HomePageState extends State<HomePage> {
            ),
            SizedBox(height:20),
            RaisedButton(
-             child: Text('跳转到列表单页面'),
+             child: Text('跳转到商品页面'),
              onPressed: (){
-
+               Navigator.pushNamed(context, '/product');
              },
              color: Theme.of(context).accentColor,
              textTheme: ButtonTextTheme.primary,
