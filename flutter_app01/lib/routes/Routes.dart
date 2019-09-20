@@ -11,6 +11,7 @@ import '../pages/user/RegisterSecond.dart';
 import '../pages/user/RegisterThird.dart';
 import '../pages/AppBarDemo.dart';
 import '../pages/TabBarController.dart';
+import '../pages/userDrawer.dart';
 
 // 配置路由
 final routes = {
@@ -24,7 +25,8 @@ final routes = {
   '/registerSecond': (context) => RegisterSecondPage(),
   '/registerThird': (context) => RegisterThirdPage(),
   '/appBar': (context) => AppBarDemoPage(),
-  '/tabBarController': (context) => TabBarControllerPage()
+  '/tabBarController': (context) => TabBarControllerPage(),
+  '/userDrawer': (context) => UserDrawerPage(),
 };
 
 // 固定写法
