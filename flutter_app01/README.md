@@ -237,3 +237,379 @@ samples, guidance on mobile development, and a full API reference.
             ),
         ```
 
+- 路由
+
+    1. 基本路由
+
+        ```dart
+            Navigator.of(context).push(
+                MaterialPageRoute(
+                   builder: (context)=>SearchPage(arg1: arg1value) // 可以进行传值
+                )
+            );
+
+            // 浮动按钮， 位置位于右下角
+            floatingActionButton: FloatingActionButton(
+                onPress: (){
+
+                }
+            ),
+            appBar: AppBar(),
+            body: Container()
+        ```
+
+    2. 命名路由
+
+        ```dart (main.dart)
+            MaterialApp(
+                routes: {
+                    '/form': (context)=>FormPage(),
+                    '/search': (context) => SearchPage()
+                }
+            )
+
+            // use
+            Navigator.pushNamed(context, '/search');
+            
+        ```
+
+        ```dart
+        final routes = {
+            '/form': (context)=>FormPage(),
+            '/search': (context, {arguments}) => SearchPage(arguments: arguments)
+        };
+
+        MaterialApp(
+            onGenerateRoute: (RouteSettings settings){
+                final String name = settings.name;
+                final Function pageContentBuilder = this.routes[name];
+                if( pageContentBuilder != null){
+                if( settings.arguments != null){
+                    final Route route = MaterialPageRoute(
+                    builder: (context) => pageContentBuilder(context, arguments: settings.arguments)
+                    );
+                    return route;
+                }else{
+                    final Route route = MaterialPageRoute(
+                    builder: (context) => pageContentBuilder(context)
+                    );
+                    return route;
+                }
+                }
+            }
+        )
+
+        // 使用
+        Navigator.pushNamed(context, '/search', arguments: {'id': 1323});
+
+        // 无状态接收参数
+        final arguments;
+        SearchPage({this.arguments});
+        // 打印参数
+        print(arguments != null ? arguments['id'] : '0')
+
+        // 有状态接收参数
+        class ProductInfoPage extends StatefulWidget {
+            final Map arguments;
+
+            ProductInfoPage({Key key, this.arguments}) : super(key: key);
+
+            _ProductInfoPageState createState() => _ProductInfoPageState(arguments: this.arguments);
+        }
+
+        class _ProductInfoPageState extends State<ProductInfoPage> {
+
+            Map arguments;
+            _ProductInfoPageState({this.arguments});
+        }
+        ```
+
+    3. 替换路由
+
+        ```
+        Navigator.of(context).pushReplacementNamed('/registerSecond');
+        // registerSecond 是需要替换的路由地址
+        ```
+
+    4. 返回根目录
+
+        ```
+        // 返回根目录
+        // Tabs 代表底部导航组件
+        // new Tabs()
+        // new Tabs(index: 3)
+        Navigator.of(context).pushAndRemoveUntil(
+            new MaterialPageRoute(
+            builder: (context) => new Tabs(index: 3) // 指定跟路由位置
+            ), 
+            (route) => route == null // 路由置空
+        );
+        ```
+
+- appBar
+
+    1. normal
+
+        ```dart
+            AppBar(
+                title: Text('AppBarDemoPage'),
+                centerTitle: true, // 标题居中显示
+                backgroundColor: Colors.red,  // 导航颜色
+                // leading: Icon(Icons.menu),   // 导航左侧图标
+                leading: IconButton(
+                icon: Icon(Icons.menu),
+                onPressed: (){
+                    print('menu');
+                },
+                ),
+                // actions // 右侧图标
+                actions: <Widget>[
+                IconButton(
+                    icon: Icon(Icons.search, size: 32, color: Colors.white),
+                    onPressed: (){
+
+                    },
+                ),
+                IconButton(
+                    icon: Icon(Icons.settings, size: 32, color: Colors.white),
+                    onPressed: (){
+                    
+                    },
+                )
+                ],
+            )
+        ```
+    
+    2. 顶部 topbar
+
+        ```dart
+            DefaultTabController(
+            length: 2,
+            child: Scaffold(
+                appBar: AppBar(
+                    title: Text('AppBarDemoPage'),
+                    centerTitle: true, // 标题居中显示
+                    bottom: TabBar(
+                        tabs: <Widget>[
+                        Tab( text: '热门'),
+                        Tab( text: '推荐')
+                        ],
+                    )
+                    ),
+                    body: TabBarView(
+                    children: <Widget>[
+                        ListView(
+                        children: <Widget>[
+                            ListTile(
+                            title: Text('第一个tab')
+                            ),
+                            ListTile(
+                            title: Text('第一个tab')
+                            ),
+                            ListTile(
+                            title: Text('第一个tab')
+                            ),
+                            ListTile(
+                            title: Text('第一个tab')
+                            ),
+                        ],
+                        ),
+                        ListView(
+                        children: <Widget>[
+                            ListTile(
+                            title: Text('第二个tab')
+                            ),
+                            ListTile(
+                            title: Text('第二个tab')
+                            ),
+                            ListTile(
+                            title: Text('第二个tab')
+                            ),
+                            ListTile(
+                            title: Text('第二个tab')
+                            ),
+                        ],
+                        ),
+                    ],
+                )
+            )
+        );
+
+        AppBar(
+            title: Row(
+                children: <Widget>[
+                    Expanded(
+                        child: TabBar(
+                        indicatorColor: Colors.red,
+                        labelColor: Colors.red,
+                        unselectedLabelColor: Colors.white,
+                        indicatorSize: TabBarIndicatorSize.label,
+                        tabs: <Widget>[
+                            Tab(text: '热销'),
+                            Tab(text: '推荐')
+                        ],
+                        )
+                    )
+                ]
+            )
+        )
+        ```
+
+    3. TabController
+     
+        ```dart
+            class TabBarControllerPage extends StatefulWidget {
+                @override
+                _TabBarControllerPageState createState() => _TabBarControllerPageState();
+                }
+
+            class _TabBarControllerPageState extends State<TabBarControllerPage> with SingleTickerProviderStateMixin {
+
+                TabController _tabController;
+
+                @override
+                void initState() {
+                    // TODO: implement initState
+                    super.initState();
+                    _tabController = new TabController(
+                    vsync: this,
+                    length: 2
+                    );
+
+                    _tabController.addListener( (){
+                    print(_tabController.index);
+                    });
+                }
+
+                @override
+                Widget build(BuildContext context) {
+                    return Scaffold(
+                    appBar: AppBar(
+                        bottom: TabBar(
+                            controller: this._tabController,
+                            tabs: <Widget>[
+
+                            ]
+                        )
+                    ),
+                    body: TabBarView(
+                        controller: this._tabController,
+                        children: <Widget>[]
+                    )
+                }
+            }
+        ```
+
+- 抽屉组件 Drawer
+
+    ``` dart
+        Scaffold(
+            drawer: Drawer(
+                child: Text('Hello, Flutter'),
+            ),
+            endDrawer: Drawer(
+                child: Text('Hello, Flutter'),
+            ),
+        )
+
+        DrawerHeader(
+            child: Text('Hello, Fluter', style: TextStyle(color: Colors.white)),
+            decoration: BoxDecoration(
+            color: Colors.yellow,
+            image: DecorationImage(
+                image: NetworkImage('https://pics5.baidu.com/feed/a686c9177f3e6709a335a4cd3cf0e738f8dc5583.jpeg?token=868c6e3193830af970c0704a961ecc9d&s=85A0F41488BA22863B80C9120100E091'),
+                fit: BoxFit.cover
+            )
+            ),
+        )
+
+        UserAccountsDrawerHeader(
+            accountName: Text('King'),
+            accountEmail: Text('purvoi@163.com'),
+            currentAccountPicture: CircleAvatar(
+            backgroundImage: NetworkImage('https://pics6.baidu.com/feed/6c224f4a20a44623c54ef1490e410a0b0df3d7fa.jpeg?token=2bfa2da73fb2e82eb9ced4f6dff4693a&s=DB8E2FC056522BEF5A86C15B030090DB'),
+            ),
+            decoration: BoxDecoration(
+            image: DecorationImage(
+                image: NetworkImage('https://pics5.baidu.com/feed/b8389b504fc2d562deff66fbd6cbe7ea77c66c14.jpeg?token=c265fb4e7af8f8ac385e42cdfd7f5c2e&s=54B7877415D37DCE600B594C0300E0B9'),
+                fit: BoxFit.cover
+            )
+            ),
+            otherAccountsPictures: <Widget>[
+            Image.network('https://pics6.baidu.com/feed/b999a9014c086e06e51acc34e85f0cf10bd1cbf9.jpeg?token=7666a5ed8a588ac83b9ce363d6bd0a08&s=353270942080495950B1B9F00300003B')
+            ],
+        )
+    ```
+
+    侧边栏路由 点击让侧边栏消失
+    ```
+        onTap: (){
+            Navigator.of(context).pop(); //让侧边栏隐藏
+            Navigator.pushNamed(context, '/userDrawer');
+        },
+    ```
+
+- 按钮组件
+
+    RaisedButton    凸起按钮 Material Design
+    ``` dart
+        RaisedButton.icon(
+            icon: Icon(Icons.settings),
+            label: Text('图标按钮'),
+            onPressed: (){
+                
+            },
+        )
+        RaisedButton(
+            child: Text('有阴影按钮'),
+            color: Colors.blue,
+            textColor: Colors.white,
+            elevation: 10.0,
+            onPressed: (){
+                print('阴影按钮');
+            },
+        ),
+
+        RaisedButton(
+            child: Text('圆角按钮'),
+            color: Colors.blue,
+            textColor: Colors.white,
+            elevation: 20.0,
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10.0)
+            ),
+            onPressed: (){
+                print('圆角按钮');
+            },
+        )
+
+        Container(
+            width: 100,
+            height: 100,
+            child: RaisedButton(
+                child: Text('圆形按钮'),
+                color: Colors.blue,
+                textColor: Colors.white, 
+                elevation: 20.0,
+                splashColor: Colors.red, // 波纹
+                shape: CircleBorder(
+                side: BorderSide(
+                    color: Colors.white
+                )
+                ),
+                onPressed: (){
+                print('圆形按钮');
+                },
+            ),
+        )
+    ```
+
+    FlatButton  扁平化按钮
+
+    OutlineButton   线框按钮
+
+    IconButton  图标按钮
+
+    ButtonBar   按钮组
+
+    FloatingActionButton 浮动按钮
