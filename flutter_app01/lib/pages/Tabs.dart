@@ -46,14 +46,6 @@ class _TabsState extends State<Tabs> {
             BottomNavigationBarItem(
               icon: Icon(Icons.card_travel),
               title: Text('购物车')
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.settings),
-              title: Text('设置')
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.merge_type),
-              title: Text('个人中心')
             )
           ]
         ),
