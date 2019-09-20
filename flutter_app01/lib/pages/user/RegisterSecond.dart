@@ -11,11 +11,12 @@ class RegisterSecondPage extends StatelessWidget {
         child: Column(
           children: <Widget>[
             SizedBox(height: 10),
-            Text('这是一个注册页面'),
+            Text('点击下一步'),
             RaisedButton(
-              child: Text('注册'),
+              child: Text('下一步'),
               onPressed: (){
-
+                // 替换路由
+                Navigator.of(context).pushReplacementNamed('/registerThird');
               },
             )
           ],

@@ -15,9 +15,10 @@ class RegisterFirstPage extends StatelessWidget {
             SizedBox(height: 10),
             Text('这是一个注册页面，点击注册跳转到第二步'),
             RaisedButton(
-              child: Text('注册'),
+              child: Text('下一步'),
               onPressed: (){
-
+                // Navigator.pushNamed(context, '/registerSecond');
+                Navigator.of(context).pushReplacementNamed('/registerSecond');
               },
             )
           ],

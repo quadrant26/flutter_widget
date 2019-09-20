@@ -1,26 +1,21 @@
 import 'package:flutter/material.dart';
 
-
-class LoginPage extends StatelessWidget {
-  const LoginPage({Key key}) : super(key: key);
-
+class RegisterThirdPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('登录')
+        title: Text('注册第三步')
       ),
       body: Center(
         child: Column(
           children: <Widget>[
             SizedBox(height: 10),
-            Text('这是一个登录页面，点击登录会执行登录操作'),
+            Text('点击确定完成注册'),
             RaisedButton(
-              child: Text('登录'),
+              child: Text('确定'),
               onPressed: (){
-                // 点击登录返回上一页
                 Navigator.of(context).pop();
-                // Navigator.pop(context);
               },
             )
           ],
