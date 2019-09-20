@@ -17,8 +17,9 @@ class RegisterFirstPage extends StatelessWidget {
             RaisedButton(
               child: Text('下一步'),
               onPressed: (){
-                // Navigator.pushNamed(context, '/registerSecond');
-                Navigator.of(context).pushReplacementNamed('/registerSecond');
+                Navigator.pushNamed(context, '/registerSecond');
+                // 替换路由
+                // Navigator.of(context).pushReplacementNamed('/registerSecond');
               },
             )
           ],

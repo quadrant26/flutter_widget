@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../pages/Tabs.dart';
+
 class RegisterThirdPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -15,7 +17,17 @@ class RegisterThirdPage extends StatelessWidget {
             RaisedButton(
               child: Text('确定'),
               onPressed: (){
-                Navigator.of(context).pop();
+
+                // 返回根目录
+                // new Tabs()
+                // new Tabs(index: 3)
+                Navigator.of(context).pushAndRemoveUntil(
+                  new MaterialPageRoute(
+                    builder: (context) => new Tabs(index: 3)
+                  ), 
+                  (route) => route == null
+                  );
+                // Navigator.of(context).pop();
               },
             )
           ],

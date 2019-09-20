@@ -28,7 +28,7 @@ class _SettingPageState extends State<SettingPage> {
           }
         ),
         RaisedButton(
-          child: Text('跳转到登录页面'),
+          child: Text('跳转到注册页面'),
           onPressed: (){
             Navigator.pushNamed(context, '/registerFirst');
           }
