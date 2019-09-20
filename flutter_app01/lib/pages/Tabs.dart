@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import './tabs/Cart.dart';
 import './tabs/Category.dart';
 import './tabs/Home.dart';
+import './tabs/setting.dart';
 
 class Tabs extends StatefulWidget {
   Tabs({Key key}) : super(key: key);
@@ -15,6 +16,7 @@ class _TabsState extends State<Tabs> {
     HomePage(),
     CategoryPage(),
     CartPage(),
+    SettingPage()
   ];
 
   @override
@@ -46,6 +48,10 @@ class _TabsState extends State<Tabs> {
             BottomNavigationBarItem(
               icon: Icon(Icons.card_travel),
               title: Text('购物车')
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.settings),
+              title: Text('设置')
             )
           ]
         ),

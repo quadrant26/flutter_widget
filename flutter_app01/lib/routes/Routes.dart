@@ -5,6 +5,9 @@ import '../pages/tabs/Form.dart';
 import '../pages/Tabs.dart';
 import '../pages/Product.dart';
 import '../pages/ProductInfo.dart';
+import '../pages/user/Login.dart';
+import '../pages/user/RegisterFirst.dart';
+import '../pages/user/RegisterSecond.dart';
 
 // 配置路由
 final routes = {
@@ -12,7 +15,10 @@ final routes = {
   '/form': (context)=>FormPage(),
   '/product': (context) => ProductPage(),
   '/search': (context, {arguments}) => SearchPage(arguments:arguments),
-  '/productInfo': (context, {arguments}) => ProductInfoPage(arguments: arguments)
+  '/productInfo': (context, {arguments}) => ProductInfoPage(arguments: arguments),
+  '/login': (context) => LoginPage(),
+  '/registerFirst': (context) => RegisterFirstPage(),
+  '/registerSecond': (context) => RegisterSecondPage(),
 };
 
 // 固定写法
