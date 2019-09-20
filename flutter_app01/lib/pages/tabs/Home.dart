@@ -17,7 +17,7 @@ class _HomePageState extends State<HomePage> {
            RaisedButton(
              child: Text('跳转到搜索页面'),
              onPressed: (){
-               Navigator.pushNamed(context, '/search');
+               Navigator.pushNamed(context, '/search', arguments: {'id': 1323});
              },
              color: Theme.of(context).accentColor,
              textTheme: ButtonTextTheme.primary,
