@@ -13,6 +13,12 @@ import '../pages/AppBarDemo.dart';
 import '../pages/TabBarController.dart';
 import '../pages/userDrawer.dart';
 import '../pages/buttons.dart';
+import '../pages/form/textField.dart';
+import '../pages/form/textFieldGet.dart';
+import '../pages/form/checkbox.dart';
+import '../pages/form/radioDemo.dart';
+import '../pages/form/switchDemo.dart';
+import '../pages/form/formExample.dart';
 
 // 配置路由
 final routes = {
@@ -29,6 +35,12 @@ final routes = {
   '/tabBarController': (context) => TabBarControllerPage(),
   '/userDrawer': (context) => UserDrawerPage(),
   '/buttons': (context) => ButtonsPage(),
+  '/textField': (context) => TextFieldDemoPage(),
+  '/textFieldGet': (context) => TextFieldGetDemoPage(),
+  '/fromCheckbox': (context) => CheckboxDemoPage(),
+  '/formRadio': (context) => RadioDemoPage(),
+  '/formSwitch': (context) => SwitchDemoPage(),
+  '/formExample': (context) => FormExamplePage(),
 };
 
 // 固定写法

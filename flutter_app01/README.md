@@ -613,3 +613,144 @@ samples, guidance on mobile development, and a full API reference.
     ButtonBar   按钮组
 
     FloatingActionButton 浮动按钮
+
+        ```dart
+        appBar: AppBar(),
+        floatingActionButton: FloatingActionButton(
+            backgroundColor: Colors.pink,
+            child: Icon(Icons.add, color: Colors.black, size: 36),
+            child: Icon(Icons.add),
+            onPressed: (){
+            print("浮动按钮");
+            },
+        ),
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+        body: Column(...)
+        ```
+
+- 表单
+
+    1. TextField
+
+        ```dart
+            TextField(
+              maxLines: 3, // 多行文本框
+              obscureText: true, // 变成密码框
+              decoration: InputDecoration(
+                hintText: '多行文本框', // 类似于 placeholder
+                border: OutlineInputBorder(), // 边框设置
+                labelText: '用户名', // 提示字段名称
+                labelStyle: TextStyle()
+              ),
+            )
+        ```
+
+        获取表单的内容
+        ```dart
+        var _username = new TextEditingController();
+
+            ...
+            TextField(
+                decoration: InputDecoration(
+                labelText: '用户名',
+                hintText: '请输入用户名',
+                ),
+                controller: _username,
+                onChanged: (value){
+                _username.text = value;
+                },
+            ),
+            ...
+        ```
+
+    2. CheckBox
+
+        ```dart
+            Checkbox(
+                value: flag,
+                onChanged: (value){
+                  setState(() {
+                   flag = value; 
+                  });
+                },
+                activeColor: Colors.pink,  // 选中的状态背景颜色
+              )
+        ```
+
+    3. Radio
+
+        ```dart
+            Radio(
+                value: 1,
+                onChanged: (v){
+                setState(() {
+                    this._sex = v;
+                });
+                },
+                groupValue: _sex,  // 按钮组必备
+            ),
+        ```
+
+    4. Switch
+
+        ```dart
+            Switch(
+              value: flag,
+              onChanged: (val){
+                setState(() {
+                  flag = val;
+                });
+              },
+            ),
+        ```
+
+    5. CheckboxListTile
+
+        ``` dart
+            CheckboxListTile(
+                value: this.flag,
+                onChanged: (value){
+                setState(() {
+                    flag = value; 
+                });
+                },
+                title: Text('标题'),
+                subtitle: Text('这是二级标题'),
+                secondary: Icon(Icons.help), // 图标
+            )
+        ```
+
+    6. RadioListTile
+
+        ```dart
+            RadioListTile(
+                value: 1,
+                onChanged: (v){
+                setState(() {
+                    this._sex = v;
+                });
+                },
+                groupValue: this._title,
+                title: Text('标题'),
+                subtitle: Text('二级标题'),
+                secondary: Icon(Icons.mail),
+                selected: this._title==1, // 设置选择是高亮状态
+            ),
+        ```
+
+    7. SwitchListTile
+
+        ```dart
+            SwitchListTile(
+              value: this.flag,
+              title: Text('标题'),
+              onChanged: (val){
+                setState(() {
+                  flag = val;
+                });
+              },
+              subtitle: Text('子标题'),
+              secondary: Icon(Icons.mail),
+        ```
+
+    8. Slide
