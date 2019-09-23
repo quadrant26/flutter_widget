@@ -754,3 +754,65 @@ samples, guidance on mobile development, and a full API reference.
         ```
 
     8. Slide
+
+
+- 时间
+
+    1. 日期和时间
+
+        ```dart
+            var now = new DateTime.now();
+            var a = now.millisecondsSinceEpoch;
+            print(a); // 毫秒
+            print(DateTime.fromMillisecondsSinceEpoch(a)); // 转化成日期
+        ```
+
+        ```dart
+            showDatePicker(
+                context: context,
+                initialDate: _nowDate,
+                firstDate: DateTime(1980),
+                lastDate: DateTime(2100),
+            ).then((result){
+                print(result);
+            });
+
+            _showDatePicker2() async{
+                var result = await showDatePicker(
+                    context: context,
+                    initialDate: _nowDate,
+                    firstDate: DateTime(1980),
+                    lastDate: DateTime(2100),
+                );
+
+                print(result);
+            }
+        ```
+
+    2. 国际化
+
+        ```dart
+
+            # pubspec.yaml
+            dependencies:
+                flutter_localizations:
+                    sdk: flutter
+
+            # main.dart
+            import 'package:flutter_localizations/flutter_localizations.dart';
+
+            new MaterialApp(
+                title: 'Flutter Demo',
+                theme: new ThemeData(
+                    primarySwatch: Colors.blue,
+                ),
+                home: new HomePage(title: ''),
+                localizationsDelegates: [                       // <-- 添加
+                    GlobalMaterialLocalizations.delegate,
+                    GlobalWidgetsLocalizations.delegate,
+                ],
+                supportedLocales: [                             // <-- 添加语言包
+                    const Locale('zh', 'CH'),
+                ],
+            )
+        ```
