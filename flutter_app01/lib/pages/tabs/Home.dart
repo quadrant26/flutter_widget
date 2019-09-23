@@ -120,6 +120,24 @@ class _HomePageState extends State<HomePage> {
              },
              color: Theme.of(context).accentColor,
              textTheme: ButtonTextTheme.primary,
+           ),
+           SizedBox(height:20),
+           RaisedButton(
+             child: Text('日期时间组件'),
+             onPressed: (){
+               Navigator.pushNamed(context, '/time');
+             },
+             color: Theme.of(context).accentColor,
+             textTheme: ButtonTextTheme.primary,
+           ),
+           SizedBox(height:20),
+           RaisedButton(
+             child: Text('第三方日期时间组件'),
+             onPressed: (){
+               Navigator.pushNamed(context, '/timeOther');
+             },
+             color: Theme.of(context).accentColor,
+             textTheme: ButtonTextTheme.primary,
            )
          ],
        ),

@@ -19,6 +19,8 @@ import '../pages/form/checkbox.dart';
 import '../pages/form/radioDemo.dart';
 import '../pages/form/switchDemo.dart';
 import '../pages/form/formExample.dart';
+import '../pages/time/time.dart';
+import '../pages/time/timeOther.dart';
 
 // 配置路由
 final routes = {
@@ -41,6 +43,8 @@ final routes = {
   '/formRadio': (context) => RadioDemoPage(),
   '/formSwitch': (context) => SwitchDemoPage(),
   '/formExample': (context) => FormExamplePage(),
+  '/time': (context) => TimeDemoPage(),
+  '/timeOther': (context) => TimeOtherDemoPage(),
 };
 
 // 固定写法
