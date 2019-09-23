@@ -12,6 +12,14 @@ class ButtonsPage extends StatelessWidget {
           )
         ],
       ),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.pink,
+        child: Icon(Icons.add, color: Colors.black, size: 36),
+        onPressed: (){
+          print("浮动按钮");
+        },
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
