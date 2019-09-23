@@ -3,6 +3,7 @@ import './tabs/Cart.dart';
 import './tabs/Category.dart';
 import './tabs/Home.dart';
 import './tabs/setting.dart';
+import './Product.dart';
 
 class Tabs extends StatefulWidget {
   final index;
@@ -21,6 +22,7 @@ class _TabsState extends State<Tabs> {
   List _pageList = [
     HomePage(),
     CategoryPage(),
+    ProductPage(),
     CartPage(),
     SettingPage()
   ];
@@ -42,14 +44,14 @@ class _TabsState extends State<Tabs> {
           height:65,
           margin: EdgeInsets.only(top: 0.0),
           child: FloatingActionButton(
-            child: Icon(Icons.add),
+            child: Icon(Icons.message),
             onPressed: (){
               // print("浮动按钮");
               setState(() {
-               this._currentIndex = 1; 
+               this._currentIndex = 2; 
               });
             },
-            backgroundColor: this._currentIndex == 1 ? Colors.pink: Colors.yellow,
+            backgroundColor: this._currentIndex == 2 ? Colors.pink: Colors.yellow,
           )
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
@@ -73,8 +75,8 @@ class _TabsState extends State<Tabs> {
               title: Text('分类')
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.category),
-              title: Text('分类')
+              icon: Icon(Icons.message),
+              title: Text('消息')
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.card_travel),
